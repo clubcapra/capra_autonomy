@@ -3,25 +3,26 @@ import rospy
 from geometry_msgs.msg import Twist
 
 
-def avancer(x)
+def avancer(x) :
 
-    twist = x
+    Twist.linear.x = x
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
 
     return
 
 
-def tourner(Rz)
+def tourner(Rz) :
 
-    twist = Rz
+    Twist.angular.z = Rz
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
 
     return
 
 
-def arreter()
+def arreter() :
 
-    twist = 0
+    Twist.linear.x = 0
+    Twist.angular.z = 0
     pub = rospy.Publisher('cmd_vel', Twist, queue_size=10)
 
     return
