@@ -1,0 +1,7 @@
+<launch>
+
+    <group ns = "expedition">
+        <node pkg = "capra_autonomy" name = "direct_kinematic" type = "pub"/>
+    </group>
+
+</launch>
