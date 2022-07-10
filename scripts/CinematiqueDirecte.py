@@ -29,47 +29,35 @@ def arreter() :
     return
 
 
-def avancer(Vx,t) :
-
-    msg = Twist()
-    Twist.linear.x = Vx
+def cercle(Vx,Rz,t) :
 
     T0 = rospy.get_time()
 
     while (Tf - T0) > t :
 
-        #publier Vx à cmd vel un twist message
-       
+        #publier Vx et Rz cmd vel un twist message
+        Twist.linear.x = Vx
+        Twist.angular.z = Rz
         node()
         Tf = rospy.get_time()
 
     arreter()
+    node()
+
+    return
+
+
+def avancer(Vx,t) :
+
+    cercle(Vx,0,t)
 
     return
 
 
 def tourner(Rz,t) :
     
-    msg = Twist()
-    Twist.angular.z = Rz
-
-    while (Tf - T0) > t :
-
-        #publier Rz à cmd vel un twist message
-        Twist.angular.z = Rz
-        node()
-        Tf = rospy.get_time()
-
-    arreter()
+    cercle(0,Rz,t)
 
     return
 
 
-def cercle(Vx,Rz,t) :
-
-    #publier Vx et Rz cmd vel un twist message
-    Twist.linear.x = Vx
-    Twist.angular.z = Rz
-    node()
-
-    return
