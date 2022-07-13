@@ -1,7 +1,3 @@
 <launch>
-
-    <group ns = "expedition">
-        <node pkg = "capra_autonomy" name = "direct_kinematic" type = "pub"/>
-    </group>
-
+    <node name = "direct_kinematic" pkg = "capra_autonomy" type = "CinematiqueDirecte.py"/>
 </launch>

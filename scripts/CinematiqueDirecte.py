@@ -5,7 +5,7 @@
 import rospy
 from geometry_msgs.msg import Twist
 
-def node() :
+def kinematic() :
 
     pub = rospy.Publisher('/turtle1/cmd_vel', Twist, queue_size=10)
     rospy.init_node('direct_kinematic', anonymous=True)
@@ -24,12 +24,12 @@ def arreter() :
     msg = Twist()
     Twist.linear.x = 0
     Twist.angular.z = 0
-    node()
+    kinematic()
 
     return
 
 
-def cercle(Vx,Rz,t) :
+def bouger(Vx,Rz,t) :
 
     T0 = rospy.get_time()
 
@@ -42,21 +42,21 @@ def cercle(Vx,Rz,t) :
         Tf = rospy.get_time()
 
     arreter()
-    node()
+    kinematic()
 
     return
 
 
 def avancer(Vx,t) :
 
-    cercle(Vx,0,t)
+    bouger(Vx,0,t)
 
     return
 
 
 def tourner(Rz,t) :
     
-    cercle(0,Rz,t)
+    bouger(0,Rz,t)
 
     return
 
