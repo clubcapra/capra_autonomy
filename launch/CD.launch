@@ -1,3 +1,0 @@
-<launch>
-    <node name = "direct_kinematic" pkg = "capra_autonomy" type = "CinematiqueDirecte.py"/>
-</launch>
